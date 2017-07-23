@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/activity1"
+    android:title="Text Spinner"
+    android:onClick="textSpinner"/>
+    <item
+        android:id="@+id/activity2"
+        android:title="Map Spinner"
+        android:onClick="mapSpinner"/>
+</menu>
