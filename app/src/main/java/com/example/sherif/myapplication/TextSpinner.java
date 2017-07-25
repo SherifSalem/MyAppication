@@ -7,7 +7,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Created by sherif on 19/07/17.
@@ -29,7 +28,7 @@ public class TextSpinner extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(),"you selectet "+ names[i],Toast.LENGTH_LONG ).show();
+
                 TextView textView =(TextView)findViewById(R.id.textView3);
                 textView.setText(names[i]);
 

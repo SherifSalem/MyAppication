@@ -22,15 +22,14 @@ package="com.example.sherif.myapplication">
     </activity>
     <activity android:name=".TextSpinner" android:label="@string/select_text"></activity>
     <activity android:name=".MapSpinner">
+
     </activity>
-        <activity android:name="com.example.sherif.myapplication.MapsActivity" android:label="@string/title_activity_maps">
-        <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.example.sherif.myapplication.MapSpinner" />
+               <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.example.sherif.myapplication.MapSpinner" />
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
-    </activity>
-    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBV0KpL8b_p3JbF5Pto6g_u97_zRIUqH6w"></meta-data>
+       <meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/google_maps_key"></meta-data>
 </application>
 
 </manifest>

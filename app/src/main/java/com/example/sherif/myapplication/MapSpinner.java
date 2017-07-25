@@ -8,22 +8,33 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 /**
  * Created by sherif on 20/07/17.
  */
 
-public class MapSpinner extends AppCompatActivity {
+public class MapSpinner extends AppCompatActivity implements OnMapReadyCallback {
     Spinner spinner;
-    String[] location = {" ","Egypt", "Malaysia", "Germany"};
+    private GoogleMap map;
+
+    String[] location = {" ", "Egypt", "Malaysia", "Germany"};
+
     @Override
-    protected void onCreate (Bundle SavedInstanceState){
+    protected void onCreate(Bundle SavedInstanceState) {
         super.onCreate(SavedInstanceState);
         setContentView(R.layout.map_spinner);
-
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
 
 
         spinner = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,location);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, location);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -31,13 +42,26 @@ public class MapSpinner extends AppCompatActivity {
 
 
 
-                Toast.makeText(getApplicationContext(),"You have Selected "+ location[i],Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "You have Selected " + location[i], Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+
             }
+
+
         });
+
+    }
+
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        map = googleMap;
+        LatLng def = new LatLng(21, 39);
+        map.addMarker(new MarkerOptions().position(def).title("Makkah"));
+        map.moveCamera(CameraUpdateFactory.newLatLng(def));
     }
 }

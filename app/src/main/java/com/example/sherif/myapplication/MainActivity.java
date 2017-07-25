@@ -7,7 +7,6 @@ import android.support.v7.widget.PopupMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,14 +27,14 @@ public class MainActivity extends AppCompatActivity {
             }
 
 public void textSpinner (MenuItem item){
-        Toast.makeText(getApplicationContext(),"go to Text Spinner",Toast.LENGTH_SHORT).show();
+
     Intent intent1 = new Intent(this, TextSpinner.class);
    MainActivity.this.startActivity(intent1);
 
     }
 
     public void mapSpinner(MenuItem item) {
-        Toast.makeText(getApplicationContext(),"Go to Map Spinner",Toast.LENGTH_SHORT).show();
+
         Intent intent1 = new Intent(this, MapSpinner.class);
         MainActivity.this.startActivity(intent1);
 
