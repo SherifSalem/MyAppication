@@ -23,7 +23,7 @@ public class MapSpinner extends AppCompatActivity implements OnMapReadyCallback 
     Spinner spinner;
     private GoogleMap map;
 
-    String[] location = {" ", "Egypt", "Malaysia", "Germany"};
+    String[] location = {"Makkah ", "Egypt", "Malaysia", "Germany"};
 
     @Override
     protected void onCreate(Bundle SavedInstanceState) {
@@ -37,13 +37,47 @@ public class MapSpinner extends AppCompatActivity implements OnMapReadyCallback 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, location);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-
-
                 Toast.makeText(getApplicationContext(), "You have Selected " + location[i], Toast.LENGTH_SHORT).show();
-            }
+
+                LatLng def = new LatLng(21.4231965,39.8237068);
+                LatLng a = new LatLng(30.0594698,31.188252);
+                LatLng b = new LatLng(2.7364121,101.7015316);
+                LatLng c = new LatLng(52.5072094,13.1452763);
+
+                switch (i){
+                     case 0 :
+                         changeMarker(location[0], def);
+                         break;
+                     case 1:
+                         changeMarker(location[1], a);
+                         break;
+                    case 2:
+                        changeMarker(location[2], b);
+                        break;
+                    case 3:
+                        changeMarker(location[3], c);
+                        break;
+                    default:onMapReady(map);
+
+
+
+                 }
+
+
+
+
+
+
+                }
+
+
+
+
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -60,8 +94,19 @@ public class MapSpinner extends AppCompatActivity implements OnMapReadyCallback 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
-        LatLng def = new LatLng(21, 39);
+        LatLng def = new LatLng(21.4231965,39.8237068);
         map.addMarker(new MarkerOptions().position(def).title("Makkah"));
         map.moveCamera(CameraUpdateFactory.newLatLng(def));
-    }
-}
+
+
+        }
+        public void changeMarker (String location, LatLng latLng){
+            GoogleMap googleMap = map;
+            googleMap.addMarker(new MarkerOptions().position(latLng).title("Travel to "+ location));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+
+        }
+
+
+        }
+
