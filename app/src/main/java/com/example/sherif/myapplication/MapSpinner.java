@@ -13,6 +13,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 /**
@@ -101,9 +102,13 @@ public class MapSpinner extends AppCompatActivity implements OnMapReadyCallback 
 
         }
         public void changeMarker (String location, LatLng latLng){
-            GoogleMap googleMap = map;
-            googleMap.addMarker(new MarkerOptions().position(latLng).title("Travel to "+ location));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+            GoogleMap Googlemap = map;
+            map.clear();
+            MarkerOptions a = new MarkerOptions().position(latLng).title("Travel to " + location);
+            Marker myMarker = Googlemap.addMarker(a);
+            myMarker.setPosition(latLng);
+            Googlemap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+
 
         }
 
