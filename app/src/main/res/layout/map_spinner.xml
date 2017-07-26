@@ -33,6 +33,7 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="20dp"
         tools:context="com.example.sherif.myapplication.MapsActivity" />
 
 </LinearLayout>
